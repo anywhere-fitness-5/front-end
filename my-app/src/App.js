@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import Login from './components/UserLogin';
 import Register from './components/Client/ClientRegister'
-import Dash from './components/Dash';
+import Dash from './components/Client/ClientDash';
 import PrivateRoute from './components/PrivateRoute';
 
 import {Link, Route} from 'react-router-dom';
