@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
-import Login from './components/Login';
-import Register from './components/Register'
+import Login from './components/UserLogin';
+import Register from './components/Client/ClientRegister'
 import Dash from './components/Dash';
 import PrivateRoute from './components/PrivateRoute';
 
