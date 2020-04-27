@@ -15,6 +15,9 @@ import {
 } from "../store/ClientActions";
 
 
+const initialState = {
+    classes:[]
+};
 
 export default function clientReducer(state = intialState, action) {
     switch (action.type) {
