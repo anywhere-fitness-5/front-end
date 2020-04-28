@@ -1,7 +1,7 @@
 import React from 'react';
 import UserRegister from './Client/ClientRegister';
 import InstructorRegister from './Instructors/InstructorRegister';
-import Div from './styled-comp.jsx'
+import Div from './styled-comp/register-comp.jsx'
 
 function Register(props) {
 
