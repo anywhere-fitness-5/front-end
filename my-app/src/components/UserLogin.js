@@ -14,13 +14,13 @@ function UserLogin(props) {
         <div>
             <h2>Sign Up</h2>
 
-            <MakeForm
+            {/* <MakeForm
                 values={userValues}
                 onInputChange={onInputChange}
                 onSubmit={onSubmit}
                 disabled={formDisabled}
                 errors={formErrors}
-            />
+            /> */}
         </div>
     )
 }
