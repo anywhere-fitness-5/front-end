@@ -1,8 +1,8 @@
 import {
 
-    REG_CLIENT_START,
-    REG_CLIENT_SUCCESS,
-    REG_CLIENT_FAIL,
+    REG_START,
+    REG_SUCCESS,
+    REG_FAILED,
 
     LOGIN_START,
     LOGIN_SUCCESS,
@@ -10,31 +10,31 @@ import {
 
     GET_CLASS_LIST_START,
     GET_CLASS_LIST_SUCCESS,
-    GET_CLASS_LIST_FAIL,
+    GET_CLASS_LIST_FAILED,
 
-} from "../store/ClientActions";
+} from "../actions and reducers/ClientActions";
 
 
-const initialState = {
-    classes:[]
-};
+const intialState = {
+
+}
 
 export default function clientReducer(state = intialState, action) {
     switch (action.type) {
 
 //client register
-        case REG_CLIENT_START:
+        case REG_START:
             return {
                 ...state,
                 creatingClient: true,
             }
-        case REG_CLIENT_SUCCESS:
+        case REG_SUCCESS:
             return {
                 ...state,
                 creatingClient: false,
                 error: null,
             }
-        case REG_CLIENT_FAIL:
+        case REG_FAILED:
             return {
                 ...state,
                 creatingClient: false,
@@ -76,7 +76,7 @@ export default function clientReducer(state = intialState, action) {
                 error: null,
                 classes: action.payload,
             }
-        case GET_CLASS_LIST_FAIL:
+        case GET_CLASS_LIST_FAILED:
             return {
                 ...state,
                 readingClassList: false,
