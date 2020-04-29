@@ -3,15 +3,15 @@ import Div from './styled-comp/register-comp.jsx'
 import axios from 'axios'
 import * as yup from 'yup'
 
-const url = "https://fitness-demo.herokuapp.com"
+const url = "https://fitness-demo.herokuapp.com/api/"
 
 const initialFormValues = {
-    firstname: '',
-    lastname: '',
     username: '',
-    email: '',
+    fname: '',
+    lname: '',
     password: '',
     instructor: false,
+    email: '',
 }
 const initialFormErrors = {
     username: '',
@@ -19,11 +19,11 @@ const initialFormErrors = {
     password: '',
 }
 const formSchema = yup.object().shape({
-    firstname: yup
+    fname: yup
         .string()
         .min(1, '*first name is required*')
         .required('firstname is required'),
-    lastname: yup
+    lname: yup
         .string()
         .min(1, '*last name is required*')
         .required('lastname is required'),
@@ -41,7 +41,7 @@ const formSchema = yup.object().shape({
         .required('password is required'),
 })
 function Register(props) {
-    const [users, setUsers] = useState()
+    const [users, setUsers] = useState([])
     const [userValues, setUserValues] = useState(initialFormValues)
     const [formDisabled, setFormDisabled] = useState(true)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
@@ -49,7 +49,6 @@ function Register(props) {
         axios.post(url, user)
             .then(res => {
                 setUsers([...users, res.data])
-                // debugger
             })
             .catch(err => {
                 console.log(err)
@@ -68,11 +67,11 @@ function Register(props) {
         evt.preventDefault()
 
         const newUser = {
-            firstname: userValues.firstname,
-            lastname: userValues.lastname,
             username: userValues.username,
             email: userValues.email,
             password: userValues.password,
+            fname: userValues.fname,
+            lname: userValues.lname,
             instructor: Object.keys(userValues.instructor),
         }
         postUser(newUser)
@@ -153,16 +152,16 @@ function Form(props) {
                 <div className="input-form">
                     <label>First Name:&nbsp;
                             <input
-                            value={values.firstname}
+                            value={values.fname}
                             onChange={onInputChange}
-                            name='firstname'
+                            name='fname'
                             type='text'
                         /></label>
                     <label>Last Name:&nbsp;
                             <input
-                            value={values.lastname}
+                            value={values.lname}
                             onChange={onInputChange}
-                            name='lastname'
+                            name='lname'
                             type='text'
                         /></label>
                     <label>Username:&nbsp;
@@ -195,8 +194,8 @@ function Form(props) {
                 /></label>
                 </div>
                 <div className='errors'>
-                        {errors.firstname}<br/>
-                        {errors.lastname}
+                        {errors.fname}<br/>
+                        {errors.lname}
                 </div>
             </div>
             
