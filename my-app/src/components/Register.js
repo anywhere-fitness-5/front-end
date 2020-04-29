@@ -7,11 +7,11 @@ const url = "https://fitness-demo.herokuapp.com/api/users/register"
 
 const initialFormValues = {
     username: '',
+    password: '',
     fname: '',
     lname: '',
-    password: '',
-    instructor: false,
     email: '',
+    roleid: 1,
 }
 const initialFormErrors = {
     username: '',
@@ -39,6 +39,8 @@ const formSchema = yup.object().shape({
         .string()
         .min(6, '*password must have at least 6 characters!*')
         .required('password is required'),
+    roleid: yup
+        .number()
 })
 function Register(props) {
     const [users, setUsers] = useState([])
@@ -69,11 +71,11 @@ function Register(props) {
 
         const newUser = {
             username: userValues.username,
-            email: userValues.email,
             password: userValues.password,
             fname: userValues.fname,
             lname: userValues.lname,
-            instructor: Object.keys(userValues.instructor),
+            email: userValues.email,
+            roleid: Object.keys(userValues.roleid),
         }
         postUser(newUser)
         setUserValues(initialFormValues)
@@ -82,7 +84,6 @@ function Register(props) {
         const name = evt.target.name
         const value = evt.target.value
         const checked = evt.target.checked
-
         yup
             .reach(formSchema, name)
             .validate(value)
@@ -110,8 +111,8 @@ function Register(props) {
 
         setUserValues({
             ...userValues,
-            instructor: {
-                ...userValues.instructor,
+            roleid: {
+                ...userValues.roleid,
                 [name]: isChecked,
             }
         })
@@ -120,7 +121,7 @@ function Register(props) {
         <Form
             values={userValues}
             onInputChange={onInputChange}
-            onCheckboxChange={onCheckboxChange}
+            // onCheckboxChange={onCheckboxChange}
             onSubmit={onSubmit}
             disabled={formDisabled}
             errors={formErrors}
@@ -131,7 +132,7 @@ function Form(props) {
     const {
         values,
         onInputChange,
-        onCheckboxChange,
+        // onCheckboxChange,
         onSubmit,
         disabled,
         errors,
@@ -185,20 +186,24 @@ function Form(props) {
                             name='password'
                             type='password'
                         /></label>
-                    <label>Instructor?:&nbsp;
-                    <input
-                            checked={values.role}
-                            onChange={onCheckboxChange}
-                            name='role'
-                            type='checkbox'
-                        /></label>
+                    <label>Client/Instructor:&nbsp;
+                    <select
+                            value={values.roleid}
+                            checked={values.roleid}
+                            onChange={onInputChange}
+                            name='roleid'
+                        // type='checkbox'
+                        >
+                            <option value={1}>client</option>
+                            <option value={2}>instructor</option>
+                            </select></label>
                 </div>
-                <div className='errors'>
-                    {errors.fname}<br />
-                    {errors.lname}
-                </div>
+                                <div className='errors'>
+                                    {errors.fname}<br />
+                                    {errors.lname}
+                                </div>
             </div>
-            <button onClick={onSubmit} disabled={disabled}>Confirm</button>
+                            <button onClick={onSubmit} disabled={disabled}>Confirm</button>
         </Div>
     )
 }
