@@ -52,12 +52,12 @@ function Login(props) {
     const onSubmit = evt => {
         evt.preventDefault()
 
-        const newUser = {
+        const currentUser = {
             username: userValues.username,
             password: userValues.password,
             instructor: Object.keys(userValues.instructor),
         }
-        postUser(newUser)
+        postUser(currentUser)
         setUserValues(initialFormValues)
     }
     const onInputChange = evt => {
