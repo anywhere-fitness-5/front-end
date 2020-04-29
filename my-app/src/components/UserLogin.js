@@ -8,7 +8,6 @@ const url = "https://fitness-demo.herokuapp.com/api/login"
 const initialFormValues = {
     username: '',
     password: '',
-    instructor: false,
 }
 const initialFormErrors = {
     username: '',
@@ -55,7 +54,6 @@ function Login(props) {
         const currentUser = {
             username: userValues.username,
             password: userValues.password,
-            instructor: Object.keys(userValues.instructor),
         }
         postUser(currentUser)
         setUserValues(initialFormValues)
@@ -92,10 +90,6 @@ function Login(props) {
 
         setUserValues({
             ...userValues,
-            instructor: {
-                ...userValues.instructor,
-                [name]: isChecked,
-            }
         })
     }
 
@@ -146,20 +140,12 @@ function LoginForm(props) {
                             name='password'
                             type='password'
                         /></label>
-                    <label>Instructor:&nbsp;
-            <input
-                            checked={values.role}
-                            onChange={onCheckboxChange}
-                            name='role'
-                            type='checkbox'
-                        /></label>
                 </div> {/* login-input-form */}
                 <div className='errors'>
                     {errors.password}
                 </div>
             </div> {/* login-fields */}
             <button onClick={onSubmit} disabled={disabled}>Let's get moving!</button>
-
         </Div>
     )
 }
