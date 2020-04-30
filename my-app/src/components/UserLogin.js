@@ -1,41 +1,12 @@
-// import React from 'react';
-// import  MakeForm from 'yup';
-
-// constructor(props) {
-//     super(props);
-//     this.state = {
-//         username: '',
-//         password: '',
-//     }
-// }
-// changeHandler = (event) => {
-//     event.preventDefault();
-//     this.setState({ [event.target.name]: event.target.value })
-// }
-
-// handleSubmit = (event) => {
-//     event.preventDefault()
-
-
-// const { username, password } = this.state
-
-//         this.props.UserLogin(username, password)
-//             .then(() => {
-//                 this.props.history.push(`/dashboard`)
-//                 this.setState({ username: "", password: "", })
-//             })
-//             .catch((err) => {
-//                 console.log('login', err)
-//             })
-//     }
 import React, { useState, useEffect } from 'react';
 import Div from './styled-comp/login-comp.jsx'
 import axios from 'axios'
 import * as yup from 'yup'
 import {connect} from 'react-redux'
-import {login} from '../components/actions and reducers/ClientActions'
+import {login} from './actions/Actions'
+import { useHistory } from 'react-router-dom'
 
-const url = "https://fitness-demo.herokuapp.com/api/login"
+// const url = "https://fitness-demo.herokuapp.com/api/login"
 
 const initialFormValues = {
     username: '',
@@ -56,7 +27,9 @@ const formSchema = yup.object().shape({
         .min(6, '*password must have at least 6 characters!*')
         .required('password is required'),
 })
+
 function UserLogin(props) {
+    let history = useHistory()
     const [users, setUsers] = useState([])
     const [userValues, setUserValues] = useState(initialFormValues)
     const [formDisabled, setFormDisabled] = useState(true)
@@ -83,13 +56,14 @@ function UserLogin(props) {
 
     const onSubmit = evt => {
         evt.preventDefault()
-
+console.log(props)
         const currentUser = {
             username: userValues.username,
             password: userValues.password,
-            instructor: Object.keys(userValues.instructor),
+            // instructor: Object.keys(userValues.instructor),
         }
-        props.login(currentUser)
+        console.log(currentUser)
+         props.login(currentUser, history)
         setUserValues(initialFormValues)
     }
     const onInputChange = evt => {

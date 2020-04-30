@@ -3,7 +3,7 @@ import Div from './styled-comp/register-comp.jsx'
 import axios from 'axios'
 import * as yup from 'yup'
 import {connect} from 'react-redux'
-import {register} from '../components/actions and reducers/ClientActions'
+import {register} from './actions/Actions'
 
 const url = "https://fitness-demo.herokuapp.com/api/users/register"
 

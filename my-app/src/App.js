@@ -2,8 +2,8 @@
 import React, { Component } from 'react';
 import UserLogin from './components/UserLogin';
 import Register from './components/Register'
-import Dash from './components/Client/ClientDash';
-import PrivateRoute from './components/Client/PrivateRoute';
+import Dash from './components/ClientDash';
+import PrivateRoute from './components/PrivateRoute';
 
 import { Link, Route, Switch } from 'react-router-dom';
 
@@ -16,7 +16,7 @@ class App extends React.Component {
           <Route  exact path ="/" > <div>Welcome to the home page</div> </Route> 
           <Route path="/register" component={Register} />
           <Route path="/login" component={UserLogin} />
-          <PrivateRoute path="/Dashboard" component={Dash} />
+          <PrivateRoute path="/dashboard" component={Dash} />
         </Switch>
       </div>
     );
