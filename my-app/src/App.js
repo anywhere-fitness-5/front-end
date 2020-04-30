@@ -12,7 +12,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <Switch>
-
           <Route  exact path ="/" > <div>Welcome to the home page</div> </Route> 
           <Route path="/register" component={Register} />
           <Route path="/login" component={UserLogin} />
