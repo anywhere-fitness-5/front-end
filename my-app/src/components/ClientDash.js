@@ -3,8 +3,10 @@ import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {getClasses} from "./actions/Actions"
 import Classes from "./classes/Classes";
+import ClassCreate from './classes/ClassCreate'
+
 // import ClassCreate from './classes/ClassCreate';
-// import ClassEdit from './classes/ClassEdit'
+ import ClassEdit from './classes/ClassEdit'
 
 
 
@@ -30,11 +32,11 @@ function Dashboard (props) {
                 {/* <button type="button" onClick={this.logout}>Logout</button> */}
                <p>Class List</p>
                   { (props.classes.length  === 0) ? null :
-                <Classes classes={props.classes} key={props.classes.length}/>
+                <Classes classes={props.classes} key={props.classes.id}/>
                }   
                 
-                {/* <ClassEdit />
-                <ClassCreate /> */}
+                  {/* <ClassEdit />  */}
+                <ClassCreate /> 
             </>
         )
     }
@@ -48,7 +50,7 @@ const mapDispatchToProps = {
 const mapStateToProps = state => {
     
      return {
-          classes: state.rootReducer.classes
+          classes: state.rootReducer.classes,
     }
 }
 

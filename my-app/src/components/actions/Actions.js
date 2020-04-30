@@ -125,7 +125,11 @@ export function editClass(id, info) {
             })
     }
 }
-
+export const START_EDIT = id => ({
+    type: 'EDIT_CLASS_START',
+     id
+     
+})
 
 export const DELETE_CLASS_START = 'DELETE_CLASS_START'
 export const DELETE_CLASS_SUCCESS = 'DELETE_CLASS_SUCCESS'
@@ -142,7 +146,7 @@ export function deleteClass(id) {
         console.log("Delete Class Info", id)
 
         return axios
-            .delete(`https://fitness-demo.herokuapp.com/api/classes/remove/:id`, { headers })
+            .delete(`https://fitness-demo.herokuapp.com/api/classes/remove/${id}`, { headers })
             .then((res) => {
                 dispatch({ type: DELETE_CLASS_SUCCESS, payload: res.data })
             })

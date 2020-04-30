@@ -17,6 +17,7 @@ import {
     CREATE_CLASS_FAILED,
     EDIT_CLASS_SUCCESS,
     EDIT_CLASS_FAILED,
+    EDIT_CLASS_START,
 
 } from "../actions/Actions";
 
@@ -26,7 +27,7 @@ const intialState = {
     creatingClient: false,
     error: null,
     loadingLogin: false,
-    currentUser: '',
+    currentUser: {},
     readingClassList: false,
     createLoading: true,
     createMessage: "",
@@ -145,6 +146,12 @@ export default function rootReducer(state = intialState, action) {
                 ...state,
                 editMessage: "",
                 editError: "Error. The class name might be a duplicate. Try using a different class name.",
+            }
+        }
+        case EDIT_CLASS_START:{
+            return{
+                ...state,
+                selected: action.id
             }
         }
         default:
