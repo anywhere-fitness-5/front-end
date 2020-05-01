@@ -4,7 +4,11 @@ import Register from './components/Register'
 import Home from './components/Home'
 import Dash from './components/ClientDash';
 import PrivateRoute from './components/PrivateRoute';
+
+import ClassEdit from './components/classes/ClassEdit';
+
 import Div from './components/styled-comp/home-comp.jsx'
+
 
 import { Link, Route, Switch } from 'react-router-dom';
 
@@ -19,10 +23,13 @@ class App extends React.Component {
             <Link to="/login">Login</Link>
         </nav>
         <Switch>
+
           <Route exact path="/" component={Home} />
+
           <Route path="/register" component={Register} />
           <Route path="/login" component={UserLogin} />
           <PrivateRoute path="/dashboard" component={Dash} />
+          <PrivateRoute path="/edit/:id" component={ClassEdit}/>
         </Switch>
       </Div>
     );

@@ -15,7 +15,7 @@ export function register (newUser) {
        .post(`https://fitness-demo.herokuapp.com/api/users/register`,newUser)
        .then ((response) => {
         console.log(response)
-        //    dispatch ({ type: REG_SUCCESS, payload: response.data});
+        
 
        })
        .catch((err) =>{
@@ -106,7 +106,7 @@ export const EDIT_CLASS_FAILED = 'EDIT_CLASS_FAILED'
 
 export function editClass(id, info) {
     return (dispatch) => {
-        dispatch({ type: EDIT_CLASS_START })
+        dispatch({ type: EDIT_CLASS_START ,id })
 
         const headers = {
             Authorization: localStorage.getItem('token'),
@@ -114,7 +114,7 @@ export function editClass(id, info) {
 
         console.log("Edit Class Info", info)
         
-        return axios.put(`https://fitness-demo.herokuapp.com/api/classes/update/:id`, info, { headers })
+        return axios.put(`https://fitness-demo.herokuapp.com/api/classes/update/${id}`, info, { headers })
             .then((res) => {
                 console.log("Edit Action", res.data);
                 dispatch({ type: EDIT_CLASS_SUCCESS, payload: res.data })
@@ -125,7 +125,11 @@ export function editClass(id, info) {
             })
     }
 }
-
+export const START_EDIT = id => ({
+    type: 'EDIT_CLASS_START',
+     id
+     
+})
 
 export const DELETE_CLASS_START = 'DELETE_CLASS_START'
 export const DELETE_CLASS_SUCCESS = 'DELETE_CLASS_SUCCESS'
@@ -142,7 +146,7 @@ export function deleteClass(id) {
         console.log("Delete Class Info", id)
 
         return axios
-            .delete(`https://fitness-demo.herokuapp.com/api/classes/remove/:id`, { headers })
+            .delete(`https://fitness-demo.herokuapp.com/api/classes/remove/${id}`, { headers })
             .then((res) => {
                 dispatch({ type: DELETE_CLASS_SUCCESS, payload: res.data })
             })

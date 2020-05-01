@@ -47,18 +47,7 @@ function Register(props) {
     const [userValues, setUserValues] = useState(initialFormValues)
     const [formDisabled, setFormDisabled] = useState(true)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
-    // const postUser = user => {
-    //     axios.post(url, user)
-    //         .then(res => {
-    //             setUsers([...users, res.data])
-    //             console.log(res)
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //             debugger
-    //         })
-    // }
-
+   
     useEffect(() => {
         formSchema.isValid(userValues)
             .then(valid => {

@@ -6,7 +6,7 @@ import {connect} from 'react-redux'
 import {login} from './actions/Actions'
 import { useHistory } from 'react-router-dom'
 
-// const url = "https://fitness-demo.herokuapp.com/api/login"
+
 
 const initialFormValues = {
     username: '',
@@ -35,17 +35,7 @@ function UserLogin(props) {
     const [formDisabled, setFormDisabled] = useState(true)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
 
-    // const postUser = user => {
-    //     axios.post(url, user)
-    //         .then(res => {
-    //             setUsers([...users, res.data])
-    //             console.log(res)
-    //         })
-    //         .catch(err => {
-    //             console.log(err)
-    //             debugger
-    //         })
-    // }
+    
 
     useEffect(() => {
         formSchema.isValid(userValues)
@@ -60,7 +50,7 @@ console.log(props)
         const currentUser = {
             username: userValues.username,
             password: userValues.password,
-            // instructor: Object.keys(userValues.instructor),
+           
         }
         console.log(currentUser)
          props.login(currentUser, history)
@@ -159,11 +149,11 @@ function LoginForm(props) {
                             name='role'
                             type='checkbox'
                         /></label>
-                </div> {/* login-input-form */}
+                </div> 
                 <div className='errors'>
                     {errors.password}
                 </div>
-            </div> {/* login-fields */}
+            </div> 
             <button onClick={onSubmit} disabled={disabled}>Let's get moving!</button>
 
         </Div>
