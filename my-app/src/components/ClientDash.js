@@ -35,7 +35,7 @@ function Dashboard (props) {
                 <Classes classes={props.classes} key={props.classes.id}/>
                }   
                 
-                  {/* <ClassEdit />  */}
+                  
                 <ClassCreate /> 
             </>
         )

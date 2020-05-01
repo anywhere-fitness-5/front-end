@@ -106,7 +106,7 @@ export const EDIT_CLASS_FAILED = 'EDIT_CLASS_FAILED'
 
 export function editClass(id, info) {
     return (dispatch) => {
-        dispatch({ type: EDIT_CLASS_START })
+        dispatch({ type: EDIT_CLASS_START ,id })
 
         const headers = {
             Authorization: localStorage.getItem('token'),
@@ -114,7 +114,7 @@ export function editClass(id, info) {
 
         console.log("Edit Class Info", info)
         
-        return axios.put(`https://fitness-demo.herokuapp.com/api/classes/update/:id`, info, { headers })
+        return axios.put(`https://fitness-demo.herokuapp.com/api/classes/update/${id}`, info, { headers })
             .then((res) => {
                 console.log("Edit Action", res.data);
                 dispatch({ type: EDIT_CLASS_SUCCESS, payload: res.data })
