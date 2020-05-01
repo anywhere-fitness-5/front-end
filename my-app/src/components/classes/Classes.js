@@ -13,8 +13,7 @@ function Classes(props) {
 
     const deleteHandler = id => {
         console.log(id)
-        // props.classes.id = false
-        //   event.preventDefault()
+        
         props.deleteClass(id)
             .then(() => {
                 props.getClasses(props.match.params.id)
@@ -24,11 +23,7 @@ function Classes(props) {
             })
     }
 
-    // const editHandler = id => {
-    //     dispatch(START_EDIT(id))
-    //     // props.cls = props.match.params.id
-    //     // console.log(props.cls)
-    // } 
+    
 
 
 
@@ -47,7 +42,7 @@ function Classes(props) {
 
 
             </ul>
-            <ClassEdit />
+            
         </div>
     )
 }

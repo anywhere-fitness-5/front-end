@@ -94,8 +94,7 @@ export default function rootReducer(state = intialState, action) {
         return {
                 
                 ...state,
-                // readingClassList: false,
-                // error: null,
+                
                 classes: action.payload,
             }
         case GET_CLASS_LIST_FAILED:

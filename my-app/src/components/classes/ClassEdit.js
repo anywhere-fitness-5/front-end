@@ -5,9 +5,7 @@ import {useParams} from "react-router-dom"
 
 
  function ClassEdit (props) {
-    // useEffect (() => {
-    //     props.getClasses()
-    // },[token])
+    
 const [form, setForm]= useState({
     classname: '',
     classdescription: '',
@@ -15,21 +13,16 @@ const [form, setForm]= useState({
 })
     
     const changeHandler = (event) => {
-        //   event.preventDefault();
-        //  setForm({ [event.target.name]: event.target.value })
+       
         setForm({
            ...form,
            [event.target.name]: event.target.value 
         })
      }
 
-    // const cancelHandler = (event) => {
-    //      event.preventDefault()
-    //      this.props.history.goBack()
-    //  }
+    
     const submitHandler = (event) => {
          event.preventDefault();
-        //  const { classname, classdescription } = state
         console.log(props)
         props.editClass(form.id, { classname: form.classname, classdescription: form.classdescription })
      }

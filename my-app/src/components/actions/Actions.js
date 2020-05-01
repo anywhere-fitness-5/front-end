@@ -15,7 +15,7 @@ export function register (newUser) {
        .post(`https://fitness-demo.herokuapp.com/api/users/register`,newUser)
        .then ((response) => {
         console.log(response)
-        //    dispatch ({ type: REG_SUCCESS, payload: response.data});
+        
 
        })
        .catch((err) =>{
